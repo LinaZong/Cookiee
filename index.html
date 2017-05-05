@@ -1,66 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
-
-    <meta charset="UTF-8">
-    <title> SafariDataToAppDemoe</title>
+  <meta name="viewport" content="width=device-width">
 </head>
+
 <body>
+<script>
 
-<div>
+var c = document.cookie;
+var m = c.match(/name=(\w+)/);
+var name;
 
-    SafariDataToAppDemo
+if (m) {
+  document.writeln("You are " + m[1] + '.');
+  name = m[1];
+} else {
+  document.writeln("You are anonymous.");
+  name = "";
+}
 
+if (location.search.match(/redirect/)) {
+  location.href = "svclogintest://name/" + name;
+}
 
-    <div>
-
-        设置
-
-    </div>
-
-
-
-</div>
-
-
-<script type="text/javascript">
-
-    function getCookie() {
-
-        if (document.cookie.length > 0){
-
-
-            return document.cookie.replace("downloadFlag=",'')
-        }
-
-    }
-
-    function setCookie()
-    {
-        var Days = 30;
-        var exp = new Date();
-        exp.setTime(exp.getTime() + Days*24*60*60*1000);
-        document.cookie="downloadFlag=true"+";expires="+exp.toGMTString();
-    }
-
-
-    function checkCookie()
-    {
-        downloadFlag=getCookie()
-        if (downloadFlag=="true")
-        {
-            window.location.href = "testCookie://downloadFlag"
-        }
-        else
-        {
-            setCookie()
-        }
-    }
-
+function saveName() {
+    document.cookie = 'name=' + document.getElementById('name').value + ';max-age=3600';
+    location.reload();
+}
 
 </script>
 
+<input type="text" id="name">
+<input type="submit" value="Save" onclick="saveName();">
+
 </body>
-
-
-</html>
