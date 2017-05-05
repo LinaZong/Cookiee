@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <title> SafariDataToAppDemoe</title>
+</head>
+<body>
+
+<div>
+
+    SafariDataToAppDemo
+
+
+    <div>
+
+        设置
+
+    </div>
+
+
+
+</div>
+
+
+<script type="text/javascript">
+
+    function getCookie() {
+
+        if (document.cookie.length > 0){
+
+
+            return document.cookie.replace("downloadFlag=",'')
+        }
+
+    }
+
+    function setCookie()
+    {
+        var Days = 30;
+        var exp = new Date();
+        exp.setTime(exp.getTime() + Days*24*60*60*1000);
+        document.cookie="downloadFlag=true"+";expires="+exp.toGMTString();
+    }
+
+
+    function checkCookie()
+    {
+        downloadFlag=getCookie()
+        if (downloadFlag=="true")
+        {
+            window.location.href = "testCookie://downloadFlag"
+        }
+        else
+        {
+            setCookie()
+        }
+    }
+
+
+</script>
+
+</body>
+
+
+</html>
